@@ -68,7 +68,31 @@ const Register = () => {
     }
 
 
+    const handleGoogleSignIN = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('Token', data.token)
+                        toast.success('Logined SuccessFully')
+                        setTimeout(() => {
+                            navigate(from, { replace: true })
 
+                        }, 500);
+                    })
+            })
+            .catch(error => {
+                console.log('error', error);
+            })
+    }
 
     return (
         <div className='mt-10 mb-10 '>
@@ -117,7 +141,7 @@ const Register = () => {
                                         <p className='horizontal-line text-center mt-2 text-base font-semibold'>Or</p>
                                         <div className="relative">
                                             <button
-
+                                                onClick={handleGoogleSignIN}
                                                 className="font-semibold text-base rounded-md py-2 w-full border border-gray-300 flex justify-center items-center">
                                                 <FcGoogle className='mr-2 text-2xl' />
                                                 Continue With Google
