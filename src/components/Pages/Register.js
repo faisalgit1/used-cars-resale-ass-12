@@ -5,10 +5,74 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
+    const { signUp, setuserProfile, googleSignIn } = useContext(AuthContext)
+    const [error, setError] = useState('')
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const navigate = useNavigate()
+
+    const handleSubmit = e => {
+
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photourl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(name, photoURL, email, password);
+        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setError('Please provide at least two uppercase');
+            return;
+        }
+        if (password.length < 6) {
+            setError('Please should be at least 6 characters.');
+            return;
+        }
+        if (!/(?=.*[!@#$&*])/.test(password)) {
+            setError('Please add at least one special character');
+            return;
+        }
+        setError('');
+        signUp(email, password)
+            .then(result => {
+                const user = result.user;
+                form.reset()
+                handleUserProfile(name, photoURL)
+                setTimeout(() => {
+                    navigate(from, { replace: true })
+
+                }, 1000);
+                toast.success('Register Success')
+
+            })
+            .catch(error => {
+                console.log('error', error);
+                setError(error.message)
+            })
+
+    }
+
+
+    const handleUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        console.log(profile);
+        setuserProfile(profile)
+            .then((result) => { console.log(result.user); })
+            .catch(error => console.log(error))
+    }
+
+
+
 
     return (
         <div className='mt-10 mb-10 '>
-            <form >
+            <form onSubmit={handleSubmit}>
                 <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto w-[96%] md:w-1/3 mx-auto">
                         <div
@@ -42,7 +106,7 @@ const Register = () => {
                                             <button className="bg-green-400 text-white rounded-md py-2 w-full my-4">Register</button>
                                         </div>
                                         <div>
-                                            <p className="text-red-500"></p>
+                                            <p className="text-red-500">{error}</p>
                                         </div>
                                         <p className='text-center text-base font-semibold'>
                                             <small>
