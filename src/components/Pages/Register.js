@@ -1,102 +1,87 @@
 import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Register = () => {
-    const { signUp, setuserProfile, googleSignIn } = useContext(AuthContext)
+    const { signUp, googleSignIn, setuserProfile } = useContext(AuthContext)
     const [error, setError] = useState('')
-
-    const location = useLocation();
+    const navigate = useNavigate()
+    const location = useLocation()
     const from = location.state?.from?.pathname || '/';
 
-    const navigate = useNavigate()
+    // REACT Form
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    const handleSignup = data => {
+        console.log(data)
 
-    const handleSubmit = e => {
-
-        e.preventDefault()
-        const form = e.target;
-        const name = form.name.value;
-        const photoURL = form.photourl.value;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        console.log(name, photoURL, email, password);
-        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-            setError('Please provide at least two uppercase');
-            return;
-        }
-        if (password.length < 6) {
-            setError('Please should be at least 6 characters.');
-            return;
-        }
-        if (!/(?=.*[!@#$&*])/.test(password)) {
-            setError('Please add at least one special character');
-            return;
-        }
-        setError('');
-        signUp(email, password)
+        signUp(data.email, data.password)
             .then(result => {
-                const user = result.user;
-                form.reset()
-                handleUserProfile(name, photoURL)
-                setTimeout(() => {
-                    navigate(from, { replace: true })
 
-                }, 1000);
-                toast.success('Register Success')
+                const profile = {
+                    displayName: data.name
+                }
+
+                setuserProfile(profile)
+                    .then(() => {
+
+                        saveUser(data.name, data.email, data.accountType);
+                    })
+                    .catch(err => console.log(err));
+
+                console.log(result)
 
             })
             .catch(error => {
-                console.log('error', error);
+                console.log(error);
                 setError(error.message)
             })
-
     }
 
+    //db user save
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role }
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('Token', data.data)
+                setTimeout(() => {
+                    navigate(from, { replace: true })
+                    toast.success('SignUp SuccessFull')
 
-    const handleUserProfile = (name, photoURL) => {
-        const profile = {
-            displayName: name,
-            photoURL: photoURL
-        }
-        console.log(profile);
-        setuserProfile(profile)
-            .then((result) => { console.log(result.user); })
-            .catch(error => console.log(error))
+                }, 300);
+
+            })
     }
 
-
-    const handleGoogleSignIN = () => {
+    const handleGoogleLogin = () => {
         googleSignIn()
-            .then(result => {
+            .then((result) => {
                 const user = result.user;
-                fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem('Token', data.token)
-                        toast.success('Logined SuccessFully')
-                        setTimeout(() => {
-                            navigate(from, { replace: true })
+                console.log(user);
+                toast.success('Google Login SuccessFull')
+                const role = 'Buyer'
+                saveUser(user.displayName, user.email, role);
 
-                        }, 500);
-                    })
             })
-            .catch(error => {
-                console.log('error', error);
-            })
-    }
+            .catch((error) => {
+                console.log(error);
+                setError(error.message);
+            });
+    };
+
 
     return (
         <div className='mt-10 mb-10 '>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(handleSignup)}>
                 <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
                     <div className="relative py-3 sm:max-w-xl sm:mx-auto w-[96%] md:w-1/3 mx-auto">
                         <div
@@ -111,20 +96,32 @@ const Register = () => {
                                     <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                                         <div className="relative mb-6">
                                             <label for="username" className="block font-bold dark:text-gray-400">Name</label>
-                                            <input id="name" name="name" type="text" className="peer  p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Your Name" required />
+                                            <input type="text"
+                                                {...register('name', { required: 'Name is Required' })} className="peer  p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Your Name" />
                                         </div>
-                                        <div className="relative mb-6">
-                                            <label for="username" className="block font-bold dark:text-gray-400">PhotoUrl</label>
-                                            <input id="photourl" name="photourl" type="text" className="peer p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="photoURL" />
+                                        <div>
+                                            <label className="label">
+                                                <span className="block font-bold dark:text-gray-400">Account Type ?</span>
+                                            </label>
+                                            <select {...register('accountType', { required: 'User is Required' })} className="peer  p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded">
+                                                <option value='Buyer'>Buyer</option>
+                                                <option>Seller</option>
+
+                                            </select>
+
+
                                         </div>
+
 
                                         <div className="relative mb-6">
                                             <label for="username" className="block font-bold dark:text-gray-400">Email</label>
-                                            <input id="email" name="email" type="email" className="peer p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Email address" required />
+                                            <input type="email"
+                                                {...register('email', { required: 'Email is required' })} className="peer p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Email address" />
                                         </div>
                                         <div className="relative">
                                             <label for="username" className="block font-bold dark:text-gray-400">Password</label>
-                                            <input id="password" name="password" type="password" className="peer p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Password" required />
+                                            <input type="password"
+                                                {...register('password', { required: 'Password is Required', minLength: { value: 6, message: "Password Must be 6 characters" }, pattern: { value: /[1-9]/, message: 'More Stornger' } })} className="peer p-2 w-full border border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 rounded" placeholder="Password" />
                                         </div>
                                         <div className="relative">
                                             <button className="bg-green-400 text-white rounded-md py-2 w-full my-4">Register</button>
@@ -141,7 +138,7 @@ const Register = () => {
                                         <p className='horizontal-line text-center mt-2 text-base font-semibold'>Or</p>
                                         <div className="relative">
                                             <button
-                                                onClick={handleGoogleSignIN}
+                                                onClick={handleGoogleLogin}
                                                 className="font-semibold text-base rounded-md py-2 w-full border border-gray-300 flex justify-center items-center">
                                                 <FcGoogle className='mr-2 text-2xl' />
                                                 Continue With Google
