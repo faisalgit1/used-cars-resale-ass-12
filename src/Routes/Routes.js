@@ -34,6 +34,20 @@ const routes = createBrowserRouter([{
             element: <Blogs></Blogs>
         }
     ]
+},
+{
+    path: '/dashboard',
+    element: <PrivateRoute><DashboardPages></DashboardPages></PrivateRoute>,
+    children: [
+        {
+            path: '/dashboard/addcar',
+            element: <PrivateRoute><AddCar></AddCar></PrivateRoute>
+        },
+        {
+            path: '/dashboard/mypost',
+            element: <PrivateRoute><MyPost></MyPost></PrivateRoute>
+        }
+    ]
 }
 ])
 
