@@ -57,7 +57,6 @@ const MyPost = () => {
                 </>
             }
             <div className='px-4 md:px-32'>
-                {/* BIKEs Card  */}
                 {
                     cars.map(car => <MyPostCard
                         key={car._id}

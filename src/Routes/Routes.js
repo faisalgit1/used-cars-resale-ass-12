@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import AddCar from '../Pages/Dashboard/AddCar'
 import MyPost from '../Pages/Dashboard/MyPost';
 import MyBuyer from '../Pages/Dashboard/MyBuyer';
+import MyBooking from '../Pages/Dashboard/MyBooking';
 
 
 const routes = createBrowserRouter([{
@@ -54,7 +55,7 @@ const routes = createBrowserRouter([{
         },
         {
             path: '/dashboard/mybooking',
-            element: <PrivateRoute></PrivateRoute>
+            element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
         }
     ]
 }

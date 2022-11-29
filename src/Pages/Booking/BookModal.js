@@ -30,9 +30,9 @@ const BookModal = ({ cardetails, setCardetails }) => {
             meetLocation: form.location.value,
             sellerEmail,
             img: image,
-            bikeModel: model,
-            bikePrice: resalePrice,
-            bikeId: _id,
+            carModel: model,
+            carPrice: resalePrice,
+            carId: _id,
         }
         console.log(bookedDetails)
         fetch(`http://localhost:5000/book`, {

@@ -44,7 +44,7 @@ const AddCar = () => {
                         sellerNumber: data.sellerNumber,
                         sellerLocation: data.sellerLocation,
                         sellerEmail: user?.email,
-                        bikedetails: data.details,
+                        cardetails: data.details,
                         postdate: date,
                         status: 'available',
                         sellerName: user?.displayName,
@@ -109,15 +109,14 @@ const AddCar = () => {
                                 {...register('image', { required: true })}
                                 type="file" className="file-input w-full max-w-xs" />
                             {errors.image && <span className='mx-2'>This field is required</span>}
-                            <p className='text-sm my-1'>Please Upload 1:1 aspect Ratio Image</p>
                         </div>
                         <div>
                             <label className="label">
-                                <span className="label-text font-semibold">Bike Model</span>
+                                <span className="label-text font-semibold">Car Model</span>
                             </label>
                             <input type='text'
                                 {...register('model', { required: true })}
-                                className='input input-bordered w-full my-2' placeholder="Bike Model" />
+                                className='input input-bordered w-full my-2' placeholder="Car Model" />
                             {errors.model && <span className='mx-2'>This field is required</span>}
                         </div>
 

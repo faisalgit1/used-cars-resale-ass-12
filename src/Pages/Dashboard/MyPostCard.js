@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyBikesCard = ({ car, handleAdvertise, setcardetails }) => {
+const MyPostCard = ({ car, handleAdvertise, setcardetails }) => {
 
 
     const {
@@ -25,7 +25,7 @@ const MyBikesCard = ({ car, handleAdvertise, setcardetails }) => {
 
     return (
         <div>
-            <div className='flex flex-col md:flex-row  select-none shadow-lg bg-white rounded-lg p-2 w-full md:w-[700px] relative my-4 border items-center font-semibold gap-5'>
+            <div className='flex flex-col md:flex-row  select-none shadow-lg bg-white rounded-lg p-2 w-full  relative my-4 border items-center font-semibold gap-5'>
                 <img className='w-32' src={image} alt="" />
                 <div>
                     <h1 className='text-xl'>
@@ -121,4 +121,4 @@ const MyBikesCard = ({ car, handleAdvertise, setcardetails }) => {
     );
 };
 
-export default MyBikesCard;
+export default MyPostCard;

@@ -25,7 +25,7 @@ const AdvertiseCard = ({ car, setCardetails }) => {
         sellerNumber,
         sellerLocation,
         postdate,
-        bikedetails,
+        cardetails,
         sellerName,
         status,
         purchaseDate,
@@ -91,7 +91,7 @@ const AdvertiseCard = ({ car, setCardetails }) => {
                             Details -
                         </p>
                         <p className='font-normal text-sm' >
-                            {bikedetails}
+                            {cardetails}
                         </p>
                     </div>
                     <div className="card-actions justify-end">

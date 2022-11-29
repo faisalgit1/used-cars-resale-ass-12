@@ -7,8 +7,8 @@ const MyBuyerCard = ({ buyer, i }) => {
         buyerName,
         buyerNumber,
         meetLocation,
-        bikeModel,
-        bikePrice,
+        carModel,
+        carPrice,
     }
         = buyer;
 
@@ -21,8 +21,8 @@ const MyBuyerCard = ({ buyer, i }) => {
                     <p className='font-bold'>Location: {meetLocation}</p>
                     <h2 className='text-2xl text-light-500 font-bold'>Buying Items</h2>
                     <div className="card-actions justify-between">
-                        <p className='font-bold'> Model : {bikeModel}</p>
-                        <p className='font-bold'> Price:{bikePrice}</p>
+                        <p className='font-bold'> Model : {carModel}</p>
+                        <p className='font-bold'> Price:{carPrice}</p>
                     </div>
                 </div>
             </div>
