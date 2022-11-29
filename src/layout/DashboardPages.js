@@ -3,10 +3,12 @@ import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
 import useBuyer from '../Hooks/useBuyer';
 import useSeller from '../Hooks/useSeller';
+import useTitle from '../Hooks/useTitle';
 import Footer from '../Pages/Shared/Footer';
 import Navbar from '../Pages/Shared/Navbar';
 
 const DashboardPages = () => {
+    useTitle('Dashboard')
     const { user } = useContext(AuthContext)
     const [isSeller] = useSeller(user?.email)
     const [isBuyer] = useBuyer(user?.email)

@@ -5,11 +5,12 @@ import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import MyPostCard from '../Dashboard/MyPostCard'
 
 
 const MyPost = () => {
-
+    useTitle('My Post')
     const { user } = useContext(AuthContext)
     const [cardetails, setcardetails] = useState(null)
 

@@ -3,11 +3,13 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import request from '../../http-request-axios';
 import MyBookingCard from './MyBookingCard';
 
 
 const MyBooking = () => {
+    useTitle('My Bookings')
     const { user, logOut } = useContext(AuthContext)
     const { data: bookingCars, isLoading, refetch } = useQuery({
         queryKey: ['bookings', user?.email],

@@ -7,11 +7,12 @@ import toast from 'react-hot-toast';
 import { format } from 'date-fns'
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 
 
 const AddCar = () => {
-
+    useTitle('Add Car')
     const { register, handleSubmit, formState: { errors } } = useForm()
     const imgKey = process.env.REACT_APP_imgBBKey
     const { user } = useContext(AuthContext)

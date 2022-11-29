@@ -2,11 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import MyBuyerCard from '../Dashboard/MyBuyerCard'
 
 
 const Mybuyers = () => {
-
+    useTitle('My Buyer')
     const { user } = useContext(AuthContext)
     const { data: buyers, isLoading } = useQuery({
         queryKey: ['buyers', user?.email],
