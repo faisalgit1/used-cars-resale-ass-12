@@ -8,7 +8,7 @@ const Footer = () => {
     const year = today.getFullYear();
 
     return (
-        <footer className='bg-theme-dark bg-gray-900 pt-20 lg:pt-32 text-white px-[15px] lg:px-0'>
+        <footer className='bg-theme-dark bg-gray-900 mt-10 pt-20 lg:pt-32 text-white px-[15px] lg:px-0'>
             <div className='container mx-auto'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
                     <div className='lg:col-span-2 mb-b-30 lg:mb-0'>

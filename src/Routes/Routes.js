@@ -10,6 +10,7 @@ import ErrorPage from '../Pages/Shared/Errorpage';
 import PrivateRoute from './PrivateRoute';
 import AddCar from '../Pages/Dashboard/AddCar'
 import MyPost from '../Pages/Dashboard/MyPost';
+import MyBuyer from '../Pages/Dashboard/MyBuyer';
 
 
 const routes = createBrowserRouter([{
@@ -46,6 +47,14 @@ const routes = createBrowserRouter([{
         {
             path: '/dashboard/mypost',
             element: <PrivateRoute><MyPost></MyPost></PrivateRoute>
+        },
+        {
+            path: '/dashboard/mybuyer',
+            element: <PrivateRoute><MyBuyer></MyBuyer></PrivateRoute>
+        },
+        {
+            path: '/dashboard/mybooking',
+            element: <PrivateRoute></PrivateRoute>
         }
     ]
 }

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import useBuyer from '../Hooks/useBuyer';
 import useSeller from '../Hooks/useSeller';
 import Footer from '../Pages/Shared/Footer';
 import Navbar from '../Pages/Shared/Navbar';
@@ -8,7 +9,7 @@ import Navbar from '../Pages/Shared/Navbar';
 const DashboardPages = () => {
     const { user } = useContext(AuthContext)
     const [isSeller] = useSeller(user?.email)
-    console.log('seller', isSeller)
+    const [isBuyer] = useBuyer(user?.email)
     return (
         <div>
             <Navbar></Navbar>
@@ -35,8 +36,13 @@ const DashboardPages = () => {
                             <>
                                 <li><Link to='/dashboard/addcar'>Add Car</Link></li>
                                 <li><Link to='/dashboard/mypost'> My Post</Link></li>
-                                <li><Link to='/dashboard/mybuyers'> My Buyer</Link></li>
+                                <li><Link to='/dashboard/mybuyer'> My Buyer</Link></li>
                             </>
+                        }
+                        {/* Buyer */}
+                        {
+                            isBuyer &&
+                            <li><Link to='/dashboard/mybooking'>My Bookings</Link></li>
                         }
 
 

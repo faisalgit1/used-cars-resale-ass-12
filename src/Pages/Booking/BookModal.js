@@ -35,12 +35,12 @@ const BookModal = ({ cardetails, setCardetails }) => {
             bikeId: _id,
         }
         console.log(bookedDetails)
-        fetch(`https://bike-hut-server.vercel.app/book`, {
+        fetch(`http://localhost:5000/book`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
 
-                authorization: `bearer ${localStorage.getItem('bikehutAccessToken')}`
+                authorization: `bearer ${localStorage.getItem('Token')}`
 
             },
             body: JSON.stringify(bookedDetails)
