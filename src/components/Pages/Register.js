@@ -39,7 +39,7 @@ const Register = () => {
                 setError(error.message)
             })
     }
-
+    console.log(handleSubmit);
     //db user save
     const saveUser = (name, email, role) => {
         const user = { name, email, role }

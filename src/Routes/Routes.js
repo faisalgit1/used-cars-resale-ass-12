@@ -12,6 +12,8 @@ import AddCar from '../Pages/Dashboard/AddCar'
 import MyPost from '../Pages/Dashboard/MyPost';
 import MyBuyer from '../Pages/Dashboard/MyBuyer';
 import MyBooking from '../Pages/Dashboard/MyBooking';
+import Alluser from '../Pages/Dashboard/Alluser';
+import AllBuyers from '../Pages/Dashboard/AllBuyers';
 
 
 const routes = createBrowserRouter([{
@@ -55,6 +57,18 @@ const routes = createBrowserRouter([{
         },
         {
             path: '/dashboard/mybooking',
+            element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
+        },
+        {
+            path: '/dashboard/allusers',
+            element: <PrivateRoute><Alluser></Alluser></PrivateRoute>
+        },
+        {
+            path: '/dashboard/allbuyers',
+            element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
+        },
+        {
+            path: '/dashboard/allsellers',
             element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
         }
     ]
