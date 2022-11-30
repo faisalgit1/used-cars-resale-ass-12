@@ -1,20 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import img from '../../assets/mazda.png'
 
-
-const Hero = () => {
+const Header = () => {
     return (
-        <section className='gap-16 items-center grid grid-cols-1 lg:grid-cols-2 py-20'>
-            <div data-aos='fade-up' data-aos-duration='1500'>
-                <h1 className='text-[40px] lg:text-[40px] lg:max-w-fit font-bold leading-10 lg:leading-[50px] mb-5'>Men's Haircuts and Hairstyles.</h1>
-                <p className='text-lg font-medium text-theme-body mb-5 lg:mr-[100px]'>The barber shop used to be more than just a place to get a new hairstyle or a fresh cut - it was a community center.</p>
-                <Link to='/services' className='bg-theme-default text-white px-6 py-4 rounded-full inline-block'>Get Start Now</Link>
-            </div>
-            <div data-aos='fade-up' data-aos-duration='2000'>
-                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhJN1c4loWUyZz7IHCZrCAYx3J4oAXxXiI7i7G-MIDrw&s' alt="" />
+        <section className="relative bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6pNSzID_6Tqjz_M3gwsxliTDX9blkA-RERA&usqp=CAU)] bg-cover bg-center bg-no-repeat">
+            <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25" />
+            <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+                <div className="max-w-xl text-center sm:text-left">
+                    <h1 className="text-3xl font-extrabold sm:text-5xl">
+                        Welcome To Resale
+                        <strong className="block font-extrabold text-rose-700">
+                            Cars World.
+                        </strong>
+                    </h1>
+                    <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+                        This is a used car selling website. This website will regularly upload photos with all the information of old cars for selling old cars. Those who like can buy. Even those who apply here to sell old cars can create a seller account and sell their used cars.
+                    </p>
+                    <div className="mt-8 flex flex-wrap gap-4 text-center">
+                        <Link to="/blogs" className="block w-full rounded bg-[#BE123B] px-12 py-3 text-sm font-medium text-white shadow hover:bg-[#541624]  focus:outline-none focus:ring active:bg-rose-500 sm:w-auto">
+                            Our Blogs
+                        </Link>
+                        <button href="#" className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     );
 };
 
-export default Hero;
+export default Header;

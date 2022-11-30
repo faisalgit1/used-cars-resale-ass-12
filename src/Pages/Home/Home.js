@@ -1,6 +1,8 @@
 import React from 'react';
 import useTitle from '../../Hooks/useTitle';
 import Advertise from './Advertise';
+import Contact from './Contact';
+import Features from './Features';
 import Header from './Header'
 
 const Home = () => {
@@ -14,6 +16,8 @@ const Home = () => {
             </div>
             <Header></Header>
             <Advertise></Advertise>
+            <Features></Features>
+            <Contact></Contact>
         </div>
     );
 };

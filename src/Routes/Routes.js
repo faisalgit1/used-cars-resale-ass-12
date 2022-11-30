@@ -14,6 +14,8 @@ import MyBuyer from '../Pages/Dashboard/MyBuyer';
 import MyBooking from '../Pages/Dashboard/MyBooking';
 import Alluser from '../Pages/Dashboard/Alluser';
 import AllBuyers from '../Pages/Dashboard/AllBuyers';
+import AllSellers from '../Pages/Dashboard/AllSellers';
+import ReporteItems from '../Pages/Dashboard/ReporteItems';
 
 
 const routes = createBrowserRouter([{
@@ -69,7 +71,11 @@ const routes = createBrowserRouter([{
         },
         {
             path: '/dashboard/allsellers',
-            element: <PrivateRoute><MyBooking></MyBooking></PrivateRoute>
+            element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
+        },
+        {
+            path: '/dashboard/reportesitems',
+            element: <PrivateRoute><ReporteItems></ReporteItems></PrivateRoute>
         }
     ]
 }

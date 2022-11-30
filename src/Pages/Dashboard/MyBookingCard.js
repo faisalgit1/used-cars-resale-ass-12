@@ -54,7 +54,7 @@ const MyBookingCard = ({ car }) => {
                             :
                             <>
                                 <Link to={`/dashboard/payment/${_id}`}>
-                                    <button className='bg-red-500 text-white font-semibold py-1 px-4 rounded-lg'>CheckOuts</button>
+                                    <button className='bg-red-500 text-white font-semibold py-1 px-4 rounded-lg'>CheckOut</button>
                                 </Link>
                             </>
                     }

@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useBuyer from '../../Hooks/useBuyer';
 import useSeller from '../../Hooks/useSeller'
@@ -48,7 +47,7 @@ const AdvertiseCard = ({ car, setCardetails }) => {
         }
 
     })
-
+    console.log(seller);
 
 
 
@@ -72,7 +71,10 @@ const AdvertiseCard = ({ car, setCardetails }) => {
             <div className="card w-96 bg-base-100 shadow-xl">
                 <h2 className="card-title flex justify-center mt-4 mb-4">
                     Seller: {sellerName}
-                    <div className="badge badge-primary">NEW</div>
+                    {
+                        seller[0]?.verifySeller && <div className="badge badge-primary">verified</div>
+                    }
+
                 </h2>
                 <figure><img src={image} alt="Car" /></figure>
                 <div className="card-body text-gray-900">
@@ -101,7 +103,7 @@ const AdvertiseCard = ({ car, setCardetails }) => {
                                 onClick={() => setCardetails(car)}
                                 htmlFor="bookNowModal" className=''>Book Now</label>
                         </div>
-                        <div className="badge  badge-accent">Report</div>
+                        <div onClick={() => handleReport(_id)} className="badge  badge-accent">Report</div>
                     </div>
                 </div>
             </div>

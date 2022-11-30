@@ -25,7 +25,7 @@ const Navbar = () => {
                             className="inline-flex items-center"
                         >
                             <img src={img} alt="" className="w-12 h-12" />
-                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+                            <span className="ml-2 text-xl font-extrabold tracking-wide text-rose-700 uppercase">
                                 Resale Products
                             </span>
                         </Link>
@@ -35,7 +35,7 @@ const Navbar = () => {
                                     to="/"
                                     aria-label="Our product"
                                     title="Our product"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-rose-700 hover:text-white transition-colors duration-200 "
                                 >
                                     Home
                                 </Link>
@@ -45,7 +45,7 @@ const Navbar = () => {
                                     to="/blogs"
                                     aria-label="dashboard"
                                     title="dashboard"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-100 transition-colors duration-200 "
                                 >
                                     Blogs
                                 </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
                                     to="/dashboard"
                                     aria-label="dashboard"
                                     title="dashboard"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-100 transition-colors duration-200 "
                                 >
                                     Dashboard
                                 </Link>
@@ -69,7 +69,7 @@ const Navbar = () => {
                                         <li>
                                             <Link
                                                 onClick={handleLogOut}
-                                                className="inline-block px-6 py-2.5 bg-color-b text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-900 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg bg-red-500 transition duration-150 ease-in-out"
+                                                className="inline-block px-6 py-2.5 bg-color-b text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-900 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg bg-[#BE123B] transition duration-150 ease-in-out"
                                                 aria-label="Sign up"
                                                 title="Sign up"
                                             >
@@ -84,7 +84,7 @@ const Navbar = () => {
                                         <li>
                                             <Link
                                                 to="/login"
-                                                className="inline-block px-6 py-2.5 bg-color-b text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-900 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg bg-red-500 transition duration-150 ease-in-out"
+                                                className="inline-block px-6 py-2.5 bg-color-b text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-900 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg bg-[#BE123B] transition duration-150 ease-in-out"
                                                 aria-label="Sign up"
                                                 title="Sign up"
                                             >
@@ -130,7 +130,7 @@ const Navbar = () => {
                                                     className="inline-flex items-center"
                                                 >
                                                     <img src={img} alt="" className="w-12 h-12" />
-                                                    <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                                                    <span className="ml-2 text-xl font-extrabold tracking-wide text-rose-700 uppercase">
                                                         Resale Products
                                                     </span>
                                                 </Link>
@@ -161,7 +161,7 @@ const Navbar = () => {
                                                         to="/"
                                                         aria-label="Our product"
                                                         title="Our product"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                        className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-700 transition-colors duration-200 "
                                                     >
                                                         Home
                                                     </Link>
@@ -172,7 +172,7 @@ const Navbar = () => {
                                                         to="/blogs"
                                                         aria-label="Blogs"
                                                         title="Blogs"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                        className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-700 transition-colors duration-200 "
                                                     >
                                                         Blogs
                                                     </Link>
@@ -182,7 +182,7 @@ const Navbar = () => {
                                                         to="/dashboard"
                                                         aria-label="dashboard"
                                                         title="dashboard"
-                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                        className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-700 transition-colors duration-200 "
                                                     >
                                                         Dashboard
                                                     </Link>
@@ -194,7 +194,7 @@ const Navbar = () => {
                                                         <li>
                                                             <Link
                                                                 onClick={handleLogOut}
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition bg-red-500 duration-200 rounded shadow-md bg-color-b btn"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition bg-[#BE123B]duration-200 rounded shadow-md bg-color-b btn"
                                                                 aria-label="Sign up"
                                                                 title="Sign up"
                                                             >
@@ -207,7 +207,7 @@ const Navbar = () => {
                                                         <li>
                                                             <Link
                                                                 to="/login"
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-red-500 transition duration-200 rounded shadow-md bg-color-b btn"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-[#BE123B] transition duration-200 rounded shadow-md bg-color-b btn"
                                                                 aria-label="Sign up"
                                                                 title="Sign up"
                                                             >
