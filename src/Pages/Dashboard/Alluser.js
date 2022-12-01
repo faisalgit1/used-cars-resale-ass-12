@@ -13,7 +13,7 @@ const Alluser = () => {
     const { data: users, isLoading, refetch } = useQuery({
         queryKey: ['sellers', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user?email=${user?.email}`, {
+            const res = await fetch(`https://used-cars-sale-server-sites.vercel.app/user?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Token')}`
                 }
@@ -33,12 +33,12 @@ const Alluser = () => {
 
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/user/admin/${id}?email=${user?.email}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/user/admin/${id}?email=${user?.email}`, {
             method: "PUT",
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`

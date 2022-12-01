@@ -7,7 +7,7 @@ const Catagories = () => {
     const { data: categorires, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories')
+            const res = await fetch('https://used-cars-sale-server-sites.vercel.app/categories')
             const data = await res.json()
             return data
         }
@@ -15,7 +15,7 @@ const Catagories = () => {
 
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full text-center animate-spin dark:border-violet-400"></div>
     }
 
     return (

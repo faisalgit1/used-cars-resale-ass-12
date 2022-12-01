@@ -18,7 +18,7 @@ const CheckOutCard = ({ booking }) => {
     const { carPrice, buyerName, buyerEmail, carId } = booking;
 
     useEffect(() => {
-        fetch("http://localhost:5000/create-checkout-intent", {
+        fetch("https://used-cars-sale-server-sites.vercel.app/create-checkout-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const CheckOutCard = ({ booking }) => {
 
             }
 
-            fetch('http://localhost:5000/checkout', {
+            fetch('https://used-cars-sale-server-sites.vercel.app/checkout', {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json",

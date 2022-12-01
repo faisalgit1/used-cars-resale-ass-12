@@ -17,7 +17,7 @@ const MyPost = () => {
     const { data: cars, isLoading, refetch } = useQuery({
         queryKey: ['cars', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/allcars?email=${user?.email}`, {
+            const res = await fetch(`https://used-cars-sale-server-sites.vercel.app/allcars?email=${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('Token')}`
                 }
@@ -28,12 +28,12 @@ const MyPost = () => {
     })
 
     if (isLoading) {
-        return <p>Loading..</p>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 
 
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/advertiseCar/${id}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/advertiseCar/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`
@@ -48,7 +48,7 @@ const MyPost = () => {
             })
     }
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/car/${id}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/car/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`
@@ -67,7 +67,7 @@ const MyPost = () => {
 
 
     const handleSold = (id) => {
-        fetch(`http://localhost:5000/car/${id}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/car/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`

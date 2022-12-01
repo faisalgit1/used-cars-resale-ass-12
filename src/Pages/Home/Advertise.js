@@ -12,7 +12,7 @@ const Advertise = () => {
     const [advertiseCars, setAdvertiseCar] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/alladvertisecar')
+        fetch('https://used-cars-sale-server-sites.vercel.app/alladvertisecar')
             .then(res => res.json())
             .then(data => {
                 const adcars = data.filter(car => car.advertise === 'true' && car.paid !== 'true');

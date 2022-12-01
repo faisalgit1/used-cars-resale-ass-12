@@ -12,7 +12,7 @@ const Mybuyers = () => {
     const { data: buyers, isLoading } = useQuery({
         queryKey: ['buyers', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/buyers?email=${user?.email}`)
+            const res = await fetch(`https://used-cars-sale-server-sites.vercel.app/buyers?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -20,7 +20,7 @@ const Mybuyers = () => {
 
 
     if (isLoading) {
-        return <p>LOADING</p>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 
 

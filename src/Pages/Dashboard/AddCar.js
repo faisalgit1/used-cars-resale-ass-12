@@ -54,7 +54,7 @@ const AddCar = () => {
                         reported: 'false'
                     }
 
-                    fetch('http://localhost:5000/addcars', {
+                    fetch('https://used-cars-sale-server-sites.vercel.app/addcars', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -87,7 +87,7 @@ const AddCar = () => {
     const { data: brands = [], } = useQuery({
         queryKey: ['brand'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories')
+            const res = await fetch('https://used-cars-sale-server-sites.vercel.app/categories')
             const data = await res.json()
             return data;
         }

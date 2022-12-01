@@ -35,7 +35,7 @@ const BookModal = ({ cardetails, setCardetails }) => {
             carId: _id,
         }
         console.log(bookedDetails)
-        fetch(`http://localhost:5000/book`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/book`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

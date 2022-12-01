@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useBuyer from '../../Hooks/useBuyer';
 import useSeller from '../../Hooks/useSeller'
@@ -96,15 +97,34 @@ const AdvertiseCard = ({ car, setCardetails }) => {
                             {cardetails}
                         </p>
                     </div>
-                    <div className="card-actions justify-end">
-                        <div className="badge badge-secondary">
-                            <label
 
-                                onClick={() => setCardetails(car)}
-                                htmlFor="bookNowModal" className=''>Book Now</label>
-                        </div>
-                        <div onClick={() => handleReport(_id)} className="badge  badge-accent">Report</div>
-                    </div>
+                    {
+                        user?.uid ?
+                            <>
+                                {
+                                    isBuyer ?
+                                        <div className="card-actions justify-end">
+                                            <div className="badge badge-secondary">
+                                                <label
+
+                                                    onClick={() => setCardetails(car)}
+                                                    htmlFor="bookNowModal" className=''>Book Now</label>
+                                            </div>
+                                            <div onClick={() => handleReport(_id)} className="badge  badge-accent">Report</div>
+                                        </div>
+                                        :
+
+                                        <>
+                                            <p className='text-rose-700 font-bold'>Only Buyer booking this item.</p>
+                                        </>
+
+                                }
+                            </>
+                            :
+                            <>
+                                <p className='text-rose-700 font-bold'>Please <Link to='/login' className='underline'> Login</Link> buyer account to book this car.</p>
+                            </>
+                    }
                 </div>
             </div>
 

@@ -43,7 +43,7 @@ const Register = () => {
     //db user save
     const saveUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

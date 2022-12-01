@@ -42,12 +42,12 @@ const routes = createBrowserRouter([{
         },
         // {
         //     path: '/cars/:id',
-        //     loader: ({ params }) => fetch(`http://localhost:5000/cars/${params.id}`),
+        //     loader: ({ params }) => fetch(`https://used-cars-sale-server-sites.vercel.app/cars/${params.id}`),
         //     element: <CategoryId></CategoryId>
         // }
         {
             path: '/cars/:id',
-            loader: ({ params }) => fetch(`http://localhost:5000/cars/${params.id}`),
+            loader: ({ params }) => fetch(`https://used-cars-sale-server-sites.vercel.app/cars/${params.id}`),
             element: <CategoryId></CategoryId>
         },
     ]
@@ -90,7 +90,7 @@ const routes = createBrowserRouter([{
         },
         {
             path: '/dashboard/checkout/:id',
-            loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
+            loader: ({ params }) => fetch(`https://used-cars-sale-server-sites.vercel.app/bookings/${params.id}`),
             element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
         }
     ]

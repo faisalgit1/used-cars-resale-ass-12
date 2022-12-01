@@ -23,12 +23,12 @@ const ReporteItems = () => {
 
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/car/${id}`, {
+        fetch(`https://used-cars-sale-server-sites.vercel.app/car/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('Token')}`
