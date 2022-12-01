@@ -15,8 +15,8 @@ const ReporteItems = () => {
                     authorization: `bearer ${localStorage.getItem('Token')}`,
                 }
             })
-            const reportedbikes = data.filter(bike => bike.reported === 'true')
-            return reportedbikes
+            const reportedcars = data.filter(car => car.reported === 'true')
+            return reportedcars
 
         }
     })
@@ -49,14 +49,14 @@ const ReporteItems = () => {
     return (
         <div className='h-screen w-full'>
             <h1 className='text-center my-4 text-xl font-semibold'>
-                Reported Bikes
+                Reported Cars
             </h1>
             <div className='mx-4 md:mx-32'>
 
                 {
                     reportes.length === 0 ?
                         <>
-                            <p className='font-semibold text-center '>No reportes Yet</p>
+                            <p className='font-semibold text-center '>No Reportes Yet</p>
                         </>
                         :
                         <>

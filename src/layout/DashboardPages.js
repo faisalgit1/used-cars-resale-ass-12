@@ -33,28 +33,31 @@ const DashboardPages = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu font-semibold z-10  md:bg-transparent bg-gray-300  p-4 w-80  text-base-content">
-                        {
-                            isAdmin &&
-                            <>
-                                <li><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
-                                <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
-                                <li><Link to='/dashboard/reportesitems'>Reportes Items</Link></li>
-                            </>
-                        }
+                        <div className='text-[#BE123B] font bold text-2xl'>
+                            {
+                                isAdmin &&
+                                <>
+                                    <li><Link to='/dashboard/allusers'>All Users</Link></li>
+                                    <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+                                    <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                                    <li><Link to='/dashboard/reportesitems'>Reportes Items</Link></li>
+                                </>
+                            }
 
-                        {
-                            isSeller &&
-                            <>
-                                <li><Link to='/dashboard/addcar'>Add Car</Link></li>
-                                <li><Link to='/dashboard/mypost'> My Post</Link></li>
-                                <li><Link to='/dashboard/mybuyer'> My Buyer</Link></li>
-                            </>
-                        }
-                        {
-                            isBuyer &&
-                            <li><Link to='/dashboard/mybooking'>My Bookings</Link></li>
-                        }
+                            {
+                                isSeller &&
+                                <>
+                                    <li><Link to='/dashboard/addcar'>Add Car</Link></li>
+                                    <li><Link to='/dashboard/mypost'> My Post</Link></li>
+                                    <li><Link to='/dashboard/mybuyer'> My Buyer</Link></li>
+                                </>
+                            }
+                            {
+                                isBuyer &&
+                                <li><Link to='/dashboard/mybooking'>My Bookings</Link></li>
+                            }
+                        </div>
+
 
 
                     </ul>

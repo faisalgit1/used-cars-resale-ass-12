@@ -102,15 +102,7 @@ const AddCar = () => {
                 <h1 className='text-center text-xl my-4 font-semibold'>Add Car</h1>
                 <div className='w-[500px] rounded-lg bg-white  p-5 mx-auto '>
                     <form onSubmit={handleSubmit(handleAddaProduct)}>
-                        <div>
-                            <label className="label">
-                                <span className="label-text font-semibold">Image</span>
-                            </label>
-                            <input
-                                {...register('image', { required: true })}
-                                type="file" className="file-input w-full max-w-xs" />
-                            {errors.image && <span className='mx-2'>This field is required</span>}
-                        </div>
+
                         <div>
                             <label className="label">
                                 <span className="label-text font-semibold">Car Model</span>
@@ -144,6 +136,15 @@ const AddCar = () => {
                         </div>
                         <div>
                             <label className="label">
+                                <span className="label-text font-semibold">Image</span>
+                            </label>
+                            <input
+                                {...register('image', { required: true })}
+                                type="file" className="file-input w-full max-w-xs" />
+                            {errors.image && <span className='mx-2'>This field is required</span>}
+                        </div>
+                        <div>
+                            <label className="label">
                                 <span className="label-text font-semibold">Condition</span>
                             </label>
                             <select {...register('condition', { required: true })} className="select select-bordered w-full ">
@@ -159,7 +160,7 @@ const AddCar = () => {
                         </div>
                         <div>
                             <label className="label">
-                                <span className="label-text font-semibold">How Many km have driven?</span>
+                                <span className="label-text font-semibold">How Many km drived?</span>
                             </label>
                             <input type='text'
                                 {...register('totalDriven', { required: true })}

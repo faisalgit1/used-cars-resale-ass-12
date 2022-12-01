@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const MyPostCard = ({ car, handleAdvertise, setcardetails }) => {
+const MyPostCard = ({ car, handleDelete, handleAdvertise, handleSold }) => {
 
 
     const {
@@ -81,7 +81,7 @@ const MyPostCard = ({ car, handleAdvertise, setcardetails }) => {
 
                             {status === 'available' && paid === 'false' && <>
                                 <li>
-                                    <button  >
+                                    <button onClick={() => handleSold(_id)} >
                                         Sold
                                     </button>
                                 </li>
@@ -89,9 +89,6 @@ const MyPostCard = ({ car, handleAdvertise, setcardetails }) => {
                                     {
                                         car.advertise === 'true' ?
                                             <>
-                                                <p className='py-0'>
-                                                    Product is Live on
-                                                </p>
                                                 <Link to='/' className='underline'>Advertise Seciton</Link>
 
                                             </>
@@ -106,13 +103,8 @@ const MyPostCard = ({ car, handleAdvertise, setcardetails }) => {
                                 </li>
 
                             </>}
-                            <li>
 
-                                <label
-                                    onClick={() => setcardetails(car)}
-                                    htmlFor="editdetailsModal">Edit</label>
-                            </li>
-                            <li><button className='text-red-500'>Delete</button></li>
+                            <li><button onClick={() => handleDelete(_id)} className='text-red-500'>Delete</button></li>
                         </ul>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ const Advertise = () => {
         fetch('http://localhost:5000/alladvertisecar')
             .then(res => res.json())
             .then(data => {
-                const adcars = data.filter(car => car.advertise === 'true');
+                const adcars = data.filter(car => car.advertise === 'true' && car.paid !== 'true');
                 setAdvertiseCar(adcars)
             })
 

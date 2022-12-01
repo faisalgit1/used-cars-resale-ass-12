@@ -47,14 +47,47 @@ const MyPost = () => {
                 toast.success('Product is Live on Ad Section')
             })
     }
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/car/${id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
 
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch()
+                    toast.error('Post Delete Success')
+                }
+            })
+
+    }
+
+
+    const handleSold = (id) => {
+        fetch(`http://localhost:5000/car/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('Token')}`
+
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                refetch()
+                toast.success('Cars Sold')
+            })
+    }
 
     return (
         <div className='h-screen w-full'>
             <h1 className='text-xl text-center my-10 font-semibold'>You have {cars.length} {cars.length === 0 ? 'Product' : 'Products'}</h1>
             {
                 cars.length === 0 && <>
-                    <p className='font-semibold text-xs my-4 text-center'>Wand To <Link to='/dashboard/addaproduct' className='underline'>add a Product</Link></p>
+                    <p className='font-semibold text-xs my-4 text-center'>You are not <Link to='/dashboard/addaproduct' className='underline'>post yet</Link></p>
                 </>
             }
             <div className='px-4 md:px-32'>
@@ -63,7 +96,8 @@ const MyPost = () => {
                         key={car._id}
                         car={car}
                         handleAdvertise={handleAdvertise}
-                        setcardetails={setcardetails}
+                        handleDelete={handleDelete}
+                        handleSold={handleSold}
                     >
                     </MyPostCard>)
                 }

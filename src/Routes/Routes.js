@@ -16,7 +16,8 @@ import Alluser from '../Pages/Dashboard/Alluser';
 import AllBuyers from '../Pages/Dashboard/AllBuyers';
 import AllSellers from '../Pages/Dashboard/AllSellers';
 import ReporteItems from '../Pages/Dashboard/ReporteItems';
-
+import CategoryId from '../Pages/CategoryId'
+import CheckOut from '../Pages/Dashboard/CheckOut/CheckOut';
 
 const routes = createBrowserRouter([{
     path: '/',
@@ -38,7 +39,17 @@ const routes = createBrowserRouter([{
         {
             path: '/blogs',
             element: <Blogs></Blogs>
-        }
+        },
+        // {
+        //     path: '/cars/:id',
+        //     loader: ({ params }) => fetch(`http://localhost:5000/cars/${params.id}`),
+        //     element: <CategoryId></CategoryId>
+        // }
+        {
+            path: '/cars/:id',
+            loader: ({ params }) => fetch(`http://localhost:5000/cars/${params.id}`),
+            element: <CategoryId></CategoryId>
+        },
     ]
 },
 {
@@ -76,6 +87,11 @@ const routes = createBrowserRouter([{
         {
             path: '/dashboard/reportesitems',
             element: <PrivateRoute><ReporteItems></ReporteItems></PrivateRoute>
+        },
+        {
+            path: '/dashboard/checkout/:id',
+            loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
+            element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
         }
     ]
 }

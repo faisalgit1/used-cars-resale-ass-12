@@ -18,7 +18,7 @@ const AllBuyers = () => {
             try {
                 const { data } = await request.get(`/user?email=${user?.email}`, {
                     headers: {
-                        authorization: `bearer ${localStorage.getItem('bikehutAccessToken')}`,
+                        authorization: `bearer ${localStorage.getItem('Token')}`,
                     }
                 })
                 const users = data.filter(user => user.role === 'Buyer')

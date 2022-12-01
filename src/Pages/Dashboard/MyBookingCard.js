@@ -49,11 +49,11 @@ const MyBookingCard = ({ car }) => {
                     {
                         paid === 'true' ?
                             <>
-                                <p>Paid</p>
+                                <p>Done</p>
                             </>
                             :
                             <>
-                                <Link to={`/dashboard/payment/${_id}`}>
+                                <Link to={`/dashboard/checkout/${_id}`}>
                                     <button className='bg-red-500 text-white font-semibold py-1 px-4 rounded-lg'>CheckOut</button>
                                 </Link>
                             </>

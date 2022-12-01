@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import img from '../../assets/favicon.png'
+import img from '../../assets/favicon.jpg'
 import { AuthContext } from '../../Context/AuthProvider';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +24,9 @@ const Navbar = () => {
                             title="Company"
                             className="inline-flex items-center"
                         >
-                            <img src={img} alt="" className="w-12 h-12" />
+                            <img src={img} alt="" className="w-20 h-12 rounded " />
                             <span className="ml-2 text-xl font-extrabold tracking-wide text-rose-700 uppercase">
-                                Resale Products
+                                Resale Cars
                             </span>
                         </Link>
                         <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -45,7 +45,7 @@ const Navbar = () => {
                                     to="/blogs"
                                     aria-label="dashboard"
                                     title="dashboard"
-                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-100 transition-colors duration-200 "
+                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-rose-700 hover:text-white transition-colors duration-200  "
                                 >
                                     Blogs
                                 </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
                                     to="/dashboard"
                                     aria-label="dashboard"
                                     title="dashboard"
-                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-gray-100 transition-colors duration-200 "
+                                    className="font-bold text-rose-700 hover:text-white tracking-wide text-rose-700 hover:text-white transition-colors duration-200 "
                                 >
                                     Dashboard
                                 </Link>
@@ -194,7 +194,7 @@ const Navbar = () => {
                                                         <li>
                                                             <Link
                                                                 onClick={handleLogOut}
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition bg-[#BE123B]duration-200 rounded shadow-md bg-color-b btn"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-[#BE123B] transition duration-200 rounded shadow-md  btn"
                                                                 aria-label="Sign up"
                                                                 title="Sign up"
                                                             >
@@ -207,7 +207,7 @@ const Navbar = () => {
                                                         <li>
                                                             <Link
                                                                 to="/login"
-                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-[#BE123B] transition duration-200 rounded shadow-md bg-color-b btn"
+                                                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white bg-[#BE123B] transition duration-200 rounded shadow-md  btn"
                                                                 aria-label="Sign up"
                                                                 title="Sign up"
                                                             >
